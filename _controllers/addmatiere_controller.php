@@ -20,3 +20,9 @@ if (isset($_POST) && !empty($_POST))
         exit();
     }
 }
+if(isset($_GET['id']) && !empty($_GET['id']))
+{
+    Matiere::deleteMatiere($_GET['id']);
+    header('Location: addmatiere');
+    exit();
+}

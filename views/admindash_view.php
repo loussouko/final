@@ -44,9 +44,6 @@
                     <li>
                         <a href="admin">Liste des cours</a>
                     </li>
-                    <li>
-                        <a href="modifcourse">Modifier cours</a>
-                    </li>
                 </ul>
             </li>
             <li>

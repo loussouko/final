@@ -45,9 +45,6 @@
                 <li>
                     <a href="admin">Liste des cours</a>
                 </li>
-                <li>
-                    <a href="modifcourse">Modifier cours</a>
-                </li>
             </ul>
             </li>
             <li>
@@ -77,6 +74,7 @@
                 <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fas fa-align-justify"></i>
                 </button>
+                <a class="btn btn-outline-dark my-2 my-sm-0" href="logout">Deconnexion</a>
             </div>
         </nav>
         <div class="accordion" id="accordionExample">
@@ -127,7 +125,10 @@
                                 <th style="overflow:hidden;"><?= $mv['contentCours'] ?></th>
                                 <th><?php $lv=Matiere::getMatiere($mv['idMatiere']); echo $lv['libMatiere']; ?></th>
                                 <th><?php $lvl=Niveau::getNiveau($mv['idNiveau']); echo $lvl['libNiveau']; ?></th>
-                                <th></th>
+                                <th>
+                                    <a href="editcourse-<?= $mv['idCours']?>"><i class="fa fa-edit text-primary  fa-2x mr-4"></i></a>
+                                    <a href="admin-<?= $mv['idCours'] ?>"><i class="fa fa-trash text-danger fa-2x mr-4"></i></a>
+                                </th>
                             </tr>
                             <?php endforeach;?>
                         </table>
@@ -155,10 +156,13 @@
                                 $cours = Cours::getAllCours();
                                 foreach($cours as $cr):?>
                                 <th><?= $cr['nomCours'] ?></th>
-                                <th style="overflow:hidden;"><?= $cr['contentCours'] ?></th>
+                                <th style="overflow:hidden;"><?= html_entity_decode($cr['contentCours']) ?></th>
                                 <th><?php $lv=Matiere::getMatiere($cr['idMatiere']); echo $lv['libMatiere']; ?></th>
                                 <th><?php $lvl=Niveau::getNiveau($cr['idNiveau']); echo $lvl['libNiveau']; ?></th>
-                                <th></th>
+                                <th>
+                                    <a href="editcourse-<?= $cr['idCours']?>"><i class="fa fa-edit text-primary  fa-2x mr-4"></i></a>
+                                    <a href="admin-<?= $cr['idCours'] ?>"><i class="fa fa-trash text-danger fa-2x mr-4"></i></a>
+                                </th>
                             </tr>
                             <?php endforeach;?>
                         </table>

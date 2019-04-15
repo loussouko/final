@@ -16,7 +16,7 @@
       .main-container{
         background: url(assets/css/back-bg.jpg) no-repeat center ; 
         background-size: cover;
-        height: 200vh;
+        height: 150vh;
       }
       nav{
           padding:0;

@@ -11,3 +11,9 @@ if(isset($_POST) && !empty($_POST))
         $_SESSION['mati'] = $mati;
     }
 }
+if(isset($_GET['id']) && !empty($_GET['id']))
+{
+    Cours::deleteCours($_GET['id']);
+    header('Location: admin');
+    exit();
+}

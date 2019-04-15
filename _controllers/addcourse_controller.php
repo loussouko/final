@@ -9,7 +9,7 @@ if(isset($_POST) && !empty($_POST))
     $stat = validFrom([$nom,$cont,$mat,$niv]);
     if($stat)
     {
-      Cours::insertCours($nom,$cont,$mat,$niv);
+      Cours::insertCours($nom,html_entity_decode($cont),$mat,$niv);
       header('location: addcourse');
       exit();
     }

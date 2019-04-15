@@ -100,47 +100,32 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-6 bg-light">
-                    <form action="addmatiere" method="post" enctype="multipart/form-data">
-                        <h1 class="text-warning text-center">Ajouter des matieres</h1>
+                    <form action="editmatiere" method="post" enctype="multipart/form-data">
+                        <h1 class="text-warning text-center">Modifier la matiere</h1>
                         <fieldset>
                             <div class="form-group">
                                 <label for="nom" class="col-form-label h5 col-sm-8" >Nom de la matiere:</label>
-                                <input type="text" class="form-control shadow" name="nom" id="nom" placeholder="votre nom">
+                                <input type="text" class="form-control shadow" name="nom" id="nom" placeholder="votre nom" value="<?= $matiere['libMatiere'] ?>">
                             </div>
                             <div class="form-group">
                                 <label for="" class="col-form-label h5 col-sm-8">Image de la matiere</label>
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="img" name="img" accept="image/*">
+                                    <input type="file" class="custom-file-input" id="img" name="img" accept="image/*" value="<?= $matiere['imgMatiere']?>">
                                     <label class="custom-file-label" for="img">Choisir photo</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <input type="hidden" class="form-control" name="id"  value="<?=$id?>">
                                 </div>
                             </div>
                         </fieldset>
                         <div class="form-group d-flex justify-content-center">
-                            <button type="submit" class="btn btn-primary ">Ajouter</button>
+                            <button type="submit" class="btn btn-warning ">Modifier</button>
                         </div>
                     </form>
                 </div>
-                <div class="col-6">
-                    <table class="table table-bordered table-striped ">
-                        <tr>
-                            <th>Nom</th>
-                            <th>Image</th>
-                            <th>Actions</th>
-                        </tr>
-                        <tr>
-                            <?php $matieres=Matiere::getAllMatiere(); foreach($matieres as $matiere):?>
-                            <th><?= $matiere['libMatiere'] ?></th>
-                            <th>
-                                <img src="<?= $matiere['imgMatiere'] ?>" alt="" class="img-thumbnail" height="80" width="80">
-                            </th>
-                            <th>
-                                <a href="editmatiere-<?= $matiere['idMatiere'] ?>"><i class="fa fa-edit text-primary  fa-2x mr-4"></i></a>
-                                <a href="addmatiere-<?= $matiere['idMatiere'] ?>"><i class="fa fa-trash text-danger fa-2x mr-4"></i></a>
-                            </th>
-                        </tr>
-                        <?php endforeach;?>
-                    </table>
-                </div>
+
             </div>
         </div>
 

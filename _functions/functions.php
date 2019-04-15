@@ -80,13 +80,3 @@ function isAdmin()
     }
 
 }
-function textebrut($texte) {
-    $texte = ereg_replace("[\n\r]+", " ", $texte);
-    $texte = eregi_replace("< (p|br)([[:space:]][^>]*)?".">", "\n\n", $texte);
-    $texte = ereg_replace("^\n+", "", $texte);
-    $texte = ereg_replace("\n+$", "", $texte);
-    $texte = ereg_replace("\n +", "\n", $texte);
-    $texte = supprimer_tags($texte);
-    $texte = ereg_replace("( | )+", " ", $texte);
-    return $texte;
-}

@@ -25,7 +25,7 @@ class Cours{
 
 	static function deleteCours($id){
     global $db;
-    $stat = $db->prepare('DELETE FROM cours WHERE id=?');
+    $stat = $db->prepare('DELETE FROM cours WHERE idCours=?');
     $stat->execute([$id]);
 	}
 	
@@ -35,9 +35,22 @@ class Cours{
         $stat = $db->prepare('SELECT * FROM cours INNER JOIN matiere ON matiere.idMatiere = cours.idMatiere INNER JOIN niveau ON niveau.idNiveau = cours.idNiveau WHERE cours.idCours = ? and cours.idNiveau = ?');
         $stat->execute([$matiere, $lvl]);
         return $stat->fetch();
-
 	}
 
+    static function updateCours($nom,$content,$idMatiere,$idNiveau,$id){
+
+        global $db;
+        $stat = $db->prepare('UPDATE cours SET nomCours=?, contentCours=?, idMatiere=?, idNiveau=? WHERE idCours = ?');
+        $stat->execute([$nom, $content,$idMatiere,$idNiveau,$id]);
+        return $stat->fetch();
+    }
+    static function getCoursById($id){
+
+        global $db;
+        $stat = $db->prepare('SELECT * FROM cours WHERE idCours=?');
+        $stat->execute([$id]);
+        return $stat->fetch();
+    }
 	static function searchMatiere($recherche){
 
 		    global $db;

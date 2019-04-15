@@ -34,17 +34,17 @@ Class Matiere {
     static function deleteMatiere($idMatiere)
     {
         global $db;
-        $stat = $db->prepare('DELETE FROM matiere WHERE idMatiere =  ?');
+        $stat = $db->prepare('DELETE FROM cours WHERE idMatiere  = ?');
         $stat->execute([$idMatiere]);
-        return $stat->fetchAll();
+        $stat = $db->prepare('DELETE FROM matiere WHERE idMatiere  = ?');
+        $stat->execute([$idMatiere]);
     }
 
-    static function updateMatiere($idMatiere,$reqLibMatiere,$reqIdNiveau)
+    static function updateMatiere($idMatiere,$reqLibMatiere,$imgMatiere)
     {
       global $db;
-      $stat = $db->prepare('UPDATE matiere SET libelleMatiere=?, idNiveau=? WHERE idMatiere=?');
-      $stat->execute([$reqLibMatiere,$reqIdNiveau,$idMatiere]);
-      return $stat->fetchAll();
+      $stat = $db->prepare('UPDATE matiere SET libMatiere=?, imgMatiere=? WHERE idMatiere=?');
+      $stat->execute([$reqLibMatiere,$imgMatiere,$idMatiere]);
     }
     
 }

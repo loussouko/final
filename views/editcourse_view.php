@@ -81,15 +81,15 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 bg-light">
-                    <form action="addcourse" method="post">
-                        <h1 class="text-warning text-center">Ajouter des Cours</h1>
+                    <form action="editcourse" method="post">
+                        <h1 class="text-warning text-center">Modifier le cours</h1>
                         <fieldset>
                             <div class="form-group">
                                 <label for="nom" class="col-form-label h5 col-sm-8" >Nom du cours:</label>
-                                <input type="text" class="form-control shadow" name="nom" id="nom" placeholder="votre nom">
+                                <input type="text" class="form-control shadow" name="nom" id="nom" placeholder="votre nom" value="<?=$cours['nomCours']?>">
                             </div>
                             <div class="form-group">
-                                <label for="mat" class="col-form-label h5 col-sm-4" >Matiere:</label>
+                                <label for="mat" class="col-form-label h5 col-sm-4" >Matiere au paravant : <?php $lv=Matiere::getMatiere($cours['idMatiere']); echo $lv['libMatiere']; ?> </label>
                                 <select class="form-control custom-select shadow" name="mat" id="mat">
                                     <option value="">-- Selectionnez la matiere --</option>
                                     <?php
@@ -102,7 +102,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="niv" class="col-form-label h5 col-sm-8" >Niveau:</label>
+                                <label for="niv" class="col-form-label h5 col-sm-8" >Niveau au paravant : <?php $lvl=Niveau::getNiveau($cours['idNiveau']); echo $lvl['libNiveau']; ?></label>
                                 <select class="form-control custom-select shadow" name="niv" id="niv">
                                     <option value="">-- Selectionnez le niveau --</option>
                                     <?php
@@ -114,14 +114,20 @@
                                 </select>
                             </div>
                         </fieldset>
+                        <fieldset>
                             <legend class="text-center text-primary">Contenu</legend>
                             <div class="form-group">
-                                <textarea name="cont" class= "form-control shadow" id="cont" rows="20"></textarea>
+                                <textarea name="cont" class= "form-control shadow" id="cont" rows="20"><?=$cours['contentCours']?></textarea>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <input type="hidden" class="form-control" name="id"  value="<?=$id?>">
+                                </div>
                             </div>
                             <div class="form-group d-flex justify-content-center">
-                                <button type="submit" class="btn btn-primary ">Ajouter</button>
+                                <button type="submit" class="btn btn-warning ">Modifier</button>
                             </div>
-                        </fielset>
+                        </fieldset>
 
                     </form>
                 </div>
